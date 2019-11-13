@@ -2,18 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>example</title>
+  <meta charset="UTF-8">
+  <title>example</title>
+  <style>
+    ol li {
+      margin-bottom: 10px;
+    }
+
+    pre {
+      padding-left: 10px;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>打开 console</h1>
-    <script>
-        console.log(`/^The/g.exec('The fat cat sat on the mat.')`, /^The/g.exec('The fat cat sat on the mat.'))
-        console.log(`'The car parked in the garage.'.match(/.ar/g)`, 'The car parked in the garage.'.match(/.ar/g));
-        console.log(`'The car parked in the garage.'.replace(/.ar/g)`, 'The car parked in the garage.'.replace(/.ar/g, 'XXX'));
-        console.log('The car parked in the garage.'.match(/[Tt]he/g));
-    </script>
+  <h1>打开 console</h1>
+  <ol>
+
+  </ol>
+  <script>
+    const arr = [
+      `/^The/g.exec('The fat cat sat on the mat.')`, // 1
+      `'The car parked in the garage.'.match(/.ar/g)`, // 2
+      `'The car parked in the garage.'.replace(/.ar/g, 'XXX')`, // 3
+      `'The car parked in the garage.'.match(/[Tt]he/g)`, // 4
+      `'A garage is a good place to park a car.'.match(/ar[.]/g)`, // 5
+    ]
+    let tempHtml = ``
+    for (let i = 0; i < arr.length; i++) {
+      console.log(i + 1, eval(arr[i]));
+      tempHtml += `<li><pre>${arr[i]}</pre></li>`
+      document.querySelector('ol').innerHTML = tempHtml
+    }
+  </script>
 </body>
 
 </html>
