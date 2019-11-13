@@ -2,9 +2,7 @@
 
 ## example
 
-```
-/^The/.test('The fat cat sat on the mat.')
-```
+https://huzhengen.github.io/learnRegExp/example.html
 
 ## copy
 
