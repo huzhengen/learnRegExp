@@ -23,16 +23,26 @@
   </ol>
   <script>
     const arr = [
+      `'img width="100%" height="100%" src="img/test02.c6b87be6.jpg"'.replace(/(?<=(width|height)\=)\"(.*?)\"/g, '200%')`,
+      // `'img width="100%" HEIGHT="100%" src="img/test02.c6b87be6.jpg"'.replace(/(?<=(width|height|WIDTH|HEIGHT)\=)("|')(.*?)\2/g, '200%')`,
+
       `/^The/g.exec('The fat cat sat on the mat.')`,
       `'The car parked in the garage.'.match(/.ar/g)`,
       `'The car parked in the garage.'.replace(/.ar/g, 'XXX')`,
       `'The car parked in the garage.'.match(/[Tt]he/g)`,
       `'A garage is a good place to park a car.'.match(/ar[.]/g)`,
       `'The car parked in the garage.'.match(/[^c]ar/g)`,
+
+      // 表达式[a-z]* 匹配一个行中所有以小写字母开头的字符串。
       `'The car parked in the garage #21.'.match(/[a-z]*/g)`,
-      `'img width="100%" height="100%" src="img/test02.c6b87be6.jpg"'.replace(/(?<=(width|height)\=)\"(.*?)\"/g, '200%')`,
-      // `'img width="100%" HEIGHT="100%" src="img/test02.c6b87be6.jpg"'.replace(/(?<=(width|height|WIDTH|HEIGHT)\=)("|')(.*?)\2/g, '200%')`,
+
+      // 表达式\s*cat\s*匹配0或更多个空格开头和0或更多个空格结尾的cat字符串。
+      `'The fat cat sat on the concatenation.'.match(/\s*cat\s*/g)`, // \s 匹配white space(包括空格、tab等)
+
+      `'The fat cat sat on the mat.'.match(/c.+t/g)`,
+      `'The car is parked in the garage.'.match(/[T]?he/g)`,
     ]
+    console.log('The fat cat sat on the mat.'.match(/[T|t]he(?=\sfat)/g));
     let tempHtml = ``
     for (let i = 0; i < arr.length; i++) {
       console.log(i + 1, eval(arr[i]));
